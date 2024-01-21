@@ -11,9 +11,10 @@ app.use(cors());
 
 // Handle socket connections
 const server = http.createServer(app);
+const whitelistedURL = config.get("whitelistedURL");
 const io = new Server(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: whitelistedURL,
 		methods: ["GET", "POST"],
 	},
 });
